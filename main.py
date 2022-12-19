@@ -12,6 +12,7 @@ except Exception as e:
     logging.exception(e)
     sys.exit(1)
 
+
 def calcRateCardA():
     total_rateCard_A = 0
     for node in G.nodes(data=True):
