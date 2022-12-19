@@ -1,9 +1,16 @@
+import sys
+import logging
 import networkx as nx
-from RateCards import rateCardA, rateCardB
 from TrenchLength import getTrenchLength
+from RateCards import rateCardA, rateCardB
 
-G = nx.read_graphml('problem.graphml')
-
+G = ""
+try:
+    G = nx.read_graphml('problem.graphml')
+except Exception as e:
+    print("graphml file error")
+    logging.exception(e)
+    sys.exit(1)
 
 def calcRateCardA():
     total_rateCard_A = 0
@@ -33,5 +40,5 @@ def calcRateCardB():
     return total_rateCard_B
 
 
-print("total_rateCard_A", calcRateCardA())
-print("total_rateCard_B", calcRateCardB())
+print("total_from_rateCard_A", calcRateCardA())
+print("total_from_rateCard_B", calcRateCardB())
