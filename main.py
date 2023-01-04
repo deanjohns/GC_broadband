@@ -1,12 +1,12 @@
 import sys
 import logging
-import networkx as nx
+import networkx as nx  # type:ignore
 from TrenchLength import getTrenchLength
 from RateCards import rateCardA, rateCardB
 
 G = ""
 try:
-    G = nx.read_graphml('problem.graphml')
+    G = nx.read_graphml("problem.graphml")
 except Exception as e:
     print("graphml file error")
     logging.exception(e)
@@ -29,7 +29,7 @@ def calcRateCardA():
 def calcRateCardB():
     total_rateCard_B = 0
     for node in G.nodes(data=True):
-        root = [x for x, y in G.nodes(data=True) if y['type'] == "Cabinet"]
+        root = [x for x, y in G.nodes(data=True) if y["type"] == "Cabinet"]
         trenchLength = getTrenchLength(G, root[0], node[0])
         value = rateCardB(1, trenchLength)[node[1]["type"]]
         total_rateCard_B += value

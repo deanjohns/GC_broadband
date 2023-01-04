@@ -1,4 +1,4 @@
-import networkx as nx
+import networkx as nx  # type:ignore
 
 
 def getTrenchLength(tree, source, target):
@@ -6,7 +6,7 @@ def getTrenchLength(tree, source, target):
     path = nx.shortest_path(tree, source, target)
     for i in range(len(path) - 1):
         sourceEdge = path[i]
-        destinationEdge = path[i+1]
+        destinationEdge = path[i + 1]
         edge_length = tree.get_edge_data(sourceEdge, destinationEdge)["length"]
         length += edge_length
     return length
